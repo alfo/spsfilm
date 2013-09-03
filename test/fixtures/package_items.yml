@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  gear_id: MyString
+  package_id: 1
+
+two:
+  gear_id: MyString
+  package_id: 1
