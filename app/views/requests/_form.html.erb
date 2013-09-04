@@ -1,0 +1,54 @@
+<fieldset>
+	<div class="control-group">
+		<%= f.label :start_date %>
+		<div id="datetimepicker1" class="input-append date">
+		    <%= f.text_field :start_date, 'data-format' => "dd/MM/yyyy hh:mm:ss" %>
+		    <span class="add-on">
+		      <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+		    </span>
+		</div>
+	</div>
+	<div class="control-group">
+		<%= f.label :end_date %>
+		<div id="datetimepicker2" class="input-append date">
+		    <%= f.text_field :end_date, 'data-format' => "dd/MM/yyyy hh:mm:ss" %>
+		    <span class="add-on">
+		      <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+		    </span>
+		</div>
+	</div>
+	<div class="items"></div>
+	<div class="control-group">
+		<a href="#" id="add_item" class="btn btn-primary">Add Item</a>
+	</div>
+	<div class="control-group">
+		<%= f.submit 'Send Request', :class => 'btn btn-success' %>
+	</div>
+</fieldset>
+
+
+<script type="text/javascript">
+
+var item_count = 0;
+
+$(function() {
+
+	$('#datetimepicker1, #datetimepicker2').datetimepicker({
+      language: 'en',
+      pick12HourFormat: true
+    });
+
+	add_item();
+
+	$('#add_item').click(function(event) {
+		event.preventDefault();
+		add_item();
+	});
+});
+
+function add_item() {
+	item_count++;
+	$('.items').append('<div class="control-group"><label class="control-label" for="items[' + item_count + '][id]">Item ' + item_count + '</label><select name="items[' + item_count + '][id]"><% Gear.all.each do |item| %><%= "<option value='#{item.id}'>#{item.name}</option>" %><% end %> </select>');
+	
+}
+</script>

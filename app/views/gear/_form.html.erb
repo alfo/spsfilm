@@ -1,0 +1,19 @@
+<fieldset>
+	<div class="control-group">
+		<%= f.label :name, 'Name', :class => "control-label" %>
+		<%= f.text_field :name, :placeholder => "Name" %>
+	</div>
+	<div class="control-group">
+		<%= f.label :description %>
+		<%= f.text_area :description, :placeholder => 'Description' %>
+	</div>
+	<div class="control-group">
+		<%= f.label :value, 'Value' %>
+		<%= f.number_field :value, :placeholder => '£100' %>
+	</div>
+	<div class="control-group">
+		<%= f.label :serial, 'Serial Number' %>
+		<%= f.text_field :serial, :placeholder => "SN3724897" %>
+	</div>
+	<%= f.submit 'Save', :class => 'btn btn-primary' %>
+</fieldset>

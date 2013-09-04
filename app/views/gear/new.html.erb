@@ -1,0 +1,8 @@
+<div class="row">
+	<div class="span9 centered">
+		<h3>Add Gear</h3>
+		<%= form_for @gear, :url => {:action => 'create'} do |f| %>
+			<%= render 'form', :f => f %>
+		<% end %>
+	</div>
+</div>

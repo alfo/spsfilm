@@ -1,0 +1,15 @@
+<h2>Reset Password</h2>
+
+<p>Fill in a new password for your account.</p>
+
+<%= form_for @user, :url => password_reset_path(params[:id]), :html => {:class => 'form-horizontal center-form'} do |f| %>
+	<fieldset>
+		<div class="control-group">
+			<%= label :password, 'New Password', :class => 'control-label' %>
+			<div class="controls"><%= f.password_field :password, :placeholder => 'Password' %></div>
+		</div>
+		<div class="control-group">
+			<div class="controls"><%= f.submit 'Update Password', :class => 'btn btn-success' %></div>
+		</div>
+	</fieldset>
+<% end %>

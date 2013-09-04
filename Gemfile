@@ -7,11 +7,13 @@ gem 'rails', '4.0.0'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 gem 'sqlite3'
+gem 'valid_email'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
 gem 'bootstrap-sass'
+gem 'bootstrap-datetimepicker-rails'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -37,7 +39,7 @@ group :doc do
 end
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the app server
 # gem 'unicorn'

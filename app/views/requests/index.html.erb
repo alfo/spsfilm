@@ -1,0 +1,16 @@
+<% if current_user.is_admin? %>
+	<h1>All Requests</h1>
+<% else %>
+	<h1>My Requests</h1>
+<% end %>
+
+<div class="row">
+	<div class="span9">
+		<% @requests.each do |request| %>
+			<% render 'single', :request => request %>
+		<% end %>
+	</div>
+	<div class="span3">
+		<%= link_to 'New Request', new_request_path, :class => 'btn btn-primary', 'data-no-turbolink' => true %>
+	</div>
+</div>

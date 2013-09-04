@@ -1,14 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Spsfilm</title>
-  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <title>SPS Film</title>
+  <%= stylesheet_link_tag    "application", media: "all" %>
+  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <meta name="description" content="Use our beautiful online Pictorial Database to find out anything about any outdoor advert."
 </head>
-<body>
+<body class="<%= controller.controller_name %> <%= controller.action_name %>">
+<div class="body-wrap">
+	<div class="navbar navbar-static-top">
+		<div class="navbar-inner">
+			<%= link_to 'SPS Film', root_path, :class => 'brand brand-text' %>
+			
+			<% if current_user %>
+				<ul class="nav">
+					<% if current_user.is_admin? %>
+						<li <%= active?('requests') %>><%= link_to 'Requests', requests_path %></li>
+						<li <%= active?('packages') %>><%= link_to 'Packages', requests_path %></li>
+						<li <%= active?('gear') %>><%= link_to 'My Gear', gear_index_path %></li>
+						<li><%= link_to 'All Gear', gear_index_path, :params => {:show => 'all'} %></li>
+					<% else %>
+						<li <%= active?('gear') %>><%= link_to 'My Gear', gear_index_path %></li>
+						<li><%= link_to 'All Gear', '/gear?show=all' %></li>
+						<li <%= active?('requests') %>><%= link_to 'My Requests', requests_path %></li>
+						<li <%= active?('packages') %>><%= link_to 'My Packages', packages_path %></li>
+					<% end %>
+				</ul>
+			<% end %>
+			
+			<ul class="nav pull-right">
+				<% if current_user %>
+					<li><%= link_to(raw('<i class="icon-user "></i> Account'), account_path) %></li>
+					<li><%= link_to(raw('<i class="icon-off "></i> Log Out'), logout_path) %></li>
+				<% else %>
+				<% end %>
+			</ul>
+		</div>
+	</div>
 
-<%= yield %>
+	<%= render :partial => 'shared/flash' %>
+
+	<div class="container main first">
+		<%= yield %>
+	</div>
+
+	<div class="footer-push"></div>
+</div>
+
+<%= render :partial => 'shared/footer' %>
 
 </body>
 </html>
